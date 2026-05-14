@@ -88,21 +88,19 @@ reply_markup = ReplyKeyboardMarkup(
 )
 
 req = KeyboardButtonRequestUsers(
-    request_id=1,
-    user_is_bot=False,
-    max_quantity=1
-)
+        request_id=1,
+        user_is_bot=False,
+        max_quantity=1
+    )
 
-user_btn = KeyboardButton(
-    text="👤 USER ID",
-    request_users=req
-)
+    user_btn = KeyboardButton(
+        text="👤 USER ID",
+        request_users=req
+    )
 
-reply_markup.add(user_btn)
+    reply_markup.add(user_btn)
 
     markup = InlineKeyboardMarkup()
-
-    markup.row(
 
     markup.row(
         InlineKeyboardButton(
