@@ -137,10 +137,9 @@ def start(message):
                 callback_data="admin"
             )
         )
-
-    bot.send_message(
-        user_id,
-        """
+        bot.send_message(
+    user_id,
+    f"""
 🔥 PREMIUM LOOKUP BOT 🔥
 
 ⚡ Fast Fetch
@@ -149,8 +148,14 @@ def start(message):
 
 Choose Option 👇
 """,
-        reply_markup=reply_markup
-    )
+    reply_markup=reply_markup
+)
+
+bot.send_message(
+    user_id,
+    "Choose from below 👇",
+    reply_markup=markup
+)
 
 # ---------------- CALLBACKS ---------------- #
 
