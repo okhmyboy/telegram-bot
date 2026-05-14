@@ -2,7 +2,8 @@ import telebot
 import requests
 import json
 import os
-
+from flask import Flask
+from threading import Thread
 from telebot.types import InlineKeyboardMarkup
 from telebot.types import InlineKeyboardButton
 
@@ -18,7 +19,18 @@ ADMIN_ID = "7503104119"
 API = "https://tgtonum.xclusor.workers.dev/?key=xclusor&id="
 
 session = requests.Session()
+app = Flask('')
 
+@app.route('/')
+def home():
+    return "Bot Running"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 DB_FILE = "database.json"
 
 users = {}
@@ -953,7 +965,7 @@ def messages(message):
         waiting.pop(user_id)
 
 print("⚡ BOT STARTED")
-
+keep_alive()
 bot.infinity_polling(
     skip_pending=True,
     timeout=10,
