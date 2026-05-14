@@ -83,11 +83,12 @@ load_db()
 def start(message):
 
     user_id = str(message.chat.id)
-reply_markup = ReplyKeyboardMarkup(
-    resize_keyboard=True
-)
 
-req = KeyboardButtonRequestUsers(
+    reply_markup = ReplyKeyboardMarkup(
+        resize_keyboard=True
+    )
+
+    req = KeyboardButtonRequestUsers(
         request_id=1,
         user_is_bot=False,
         max_quantity=1
