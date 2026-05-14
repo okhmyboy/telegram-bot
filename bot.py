@@ -4,8 +4,13 @@ import json
 import os
 from flask import Flask
 from threading import Thread
-from telebot.types import InlineKeyboardMarkup
-from telebot.types import InlineKeyboardButton
+from telebot.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    ReplyKeyboardMarkup,
+    KeyboardButton,
+    KeyboardButtonRequestUsers
+)
 
 BOT_TOKEN = "8797340595:AAGQ-M3Rg_VTKoFO2lEGVHbACrXelfFbTTc"
 
@@ -78,7 +83,22 @@ load_db()
 def start(message):
 
     user_id = str(message.chat.id)
+reply_markup = ReplyKeyboardMarkup(
+    resize_keyboard=True
+)
 
+req = KeyboardButtonRequestUsers(
+    request_id=1,
+    user_is_bot=False,
+    max_quantity=1
+)
+
+user_btn = KeyboardButton(
+    text="👤 USER ID",
+    request_users=req
+)
+
+reply_markup.add(user_btn)
     markup = InlineKeyboardMarkup()
 
     markup.row(
@@ -127,7 +147,7 @@ def start(message):
 
 Choose Option 👇
 """,
-        reply_markup=markup
+        reply_markup=reply_markup
     )
 
 # ---------------- CALLBACKS ---------------- #
@@ -968,6 +988,31 @@ def messages(message):
         waiting.pop(user_id)
 
 print("⚡ BOT STARTED")
+# ---------------- USER ID GETTER ---------------- #
+
+@bot.message_handler(content_types=['users_shared'])
+def shared(message):
+
+    try:
+
+        user_id = message.users_shared.users[0].user_id
+
+        bot.send_message(
+            message.chat.id,
+            f"""
+✅ USER SELECTED
+
+🆔 User ID: <code>{user_id}</code>
+""",
+            parse_mode="HTML"
+        )
+
+    except Exception as e:
+
+        bot.send_message(
+            message.chat.id,
+            str(e)
+    )
 keep_alive()
 bot.infinity_polling(
     skip_pending=True,
