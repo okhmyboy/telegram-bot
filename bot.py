@@ -148,7 +148,7 @@ def start(message):
 
 Choose Option 👇
 """,
-reply_markup=reply_markup
+reply_markup=markup
     )
 
 # ---------------- CALLBACKS ---------------- #
