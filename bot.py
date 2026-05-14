@@ -137,7 +137,7 @@ def start(message):
                 callback_data="admin"
             )
         )
-        bot.send_message(
+bot.send_message(
     user_id,
     f"""
 🔥 PREMIUM LOOKUP BOT 🔥
@@ -150,7 +150,7 @@ Choose Option 👇
 """,
     reply_markup=reply_markup
 )
-        bot.send_message(
+bot.send_message(
     user_id,
     "Choose from below 👇",
     reply_markup=markup
