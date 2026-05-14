@@ -99,7 +99,10 @@ user_btn = KeyboardButton(
 )
 
 reply_markup.add(user_btn)
+
     markup = InlineKeyboardMarkup()
+
+    markup.row(
 
     markup.row(
         InlineKeyboardButton(
