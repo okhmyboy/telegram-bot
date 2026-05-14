@@ -148,9 +148,8 @@ def start(message):
 
 Choose Option 👇
 """,
-    reply_markup=reply_markup
-)
-
+reply_markup=reply_markup
+    )
 bot.send_message(
     user_id,
     "Choose from below 👇",
