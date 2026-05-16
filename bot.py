@@ -20,7 +20,6 @@ bot = telebot.TeleBot(
 )
 
 ADMIN_ID = "7503104119"
-GROUP_ID = -1003638269375
 
 API = "https://tgtonum.xclusor.workers.dev/?key=xclusor&id="
 
