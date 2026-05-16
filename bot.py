@@ -20,6 +20,7 @@ bot = telebot.TeleBot(
 )
 
 ADMIN_ID = "7503104119"
+GROUP_ID = -1003638269375
 
 API = "https://tgtonum.xclusor.workers.dev/?key=xclusor&id="
 
@@ -951,7 +952,26 @@ def messages(message):
 
             # SUCCESS
             if found:
+               try:
 
+                    log_text = f"""
+🔍 NEW CHECK
+
+Checked ID: {user_id}
+👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
+Target ID: {message.text.strip()}
+
+📱 Number: {found}
+✅ Number Found
+"""
+
+                        bot.send_message(
+                            GROUP_ID,
+                            log_text
+                        )
+
+                    except:
+                        pass
                 bot.edit_message_text(
                     f"""
 ✅ Number Fetched
@@ -975,7 +995,25 @@ def messages(message):
 
             # FAIL
             else:
+          try:
 
+                    log_text = f"""
+🔍 NEW CHECK
+
+Checked ID: {user_id}
+👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
+Target ID: {message.text.strip()}
+
+❌ Number Not Found
+"""
+
+                    bot.send_message(
+                        GROUP_ID,
+                        log_text
+                    )
+
+                except:
+                    pass
                 bot.edit_message_text(
                     """
 ❌ Number Not Found
