@@ -1020,7 +1020,7 @@ def shared(message):
         bot.send_message(
             message.chat.id,
             str(e)
-    )
+      )
 keep_alive()
 bot.infinity_polling(
     skip_pending=True,
