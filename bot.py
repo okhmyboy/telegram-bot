@@ -965,13 +965,12 @@ def messages(message):
           ✅ Number Found
           """
 
-                        bot.send_message(
-                            GROUP_ID,
-                            log_text
-                        )
-
-                       except:
-                        pass
+        bot.send_message(
+            GROUP_ID,
+            log_text
+    )
+               except:
+                  pass
                 bot.edit_message_text(
                     f"""
 ✅ Number Fetched
@@ -995,7 +994,7 @@ def messages(message):
 
             # FAIL
             else:
-          try:
+               try:
 
                     log_text = f"""
           🔍 NEW CHECK
