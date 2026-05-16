@@ -955,22 +955,22 @@ def messages(message):
                try:
 
                     log_text = f"""
-🔍 NEW CHECK
+           🔍 NEW CHECK
 
-Checked ID: {user_id}
-👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
-Target ID: {message.text.strip()}
+           Checked ID: {user_id}
+           👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
+           Target ID: {message.text.strip()}
 
-📱 Number: {found}
-✅ Number Found
-"""
+          📱 Number: {found}
+          ✅ Number Found
+          """
 
                         bot.send_message(
                             GROUP_ID,
                             log_text
                         )
 
-                    except:
+                       except:
                         pass
                 bot.edit_message_text(
                     f"""
@@ -998,21 +998,21 @@ Target ID: {message.text.strip()}
           try:
 
                     log_text = f"""
-🔍 NEW CHECK
+          🔍 NEW CHECK
 
-Checked ID: {user_id}
-👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
-Target ID: {message.text.strip()}
+          Checked ID: {user_id}
+          👤 Username: @{message.from_user.username if message.from_user.username else "No Username"}
+          Target ID: {message.text.strip()}
 
-❌ Number Not Found
-"""
+         ❌ Number Not Found
+         """
 
                     bot.send_message(
                         GROUP_ID,
                         log_text
                     )
 
-                except:
+                   except:
                     pass
                 bot.edit_message_text(
                     """
