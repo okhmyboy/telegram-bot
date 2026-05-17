@@ -477,7 +477,7 @@ users[uid] = {
 
 save_db()
 
-        try:
+try:
 
             bot.send_message(
                 uid,
