@@ -829,43 +829,79 @@ def messages(message):
 
         try:
 
-            uid, credits = message.text.split()
+            parts = message.text.strip().split()
 
-            if uid in users:
+            if len(parts) != 2:
+                bot.send_message(
+                    user_id,
+                    "❌ Format:\nUserID Credits"
+                )
+                waiting.pop(user_id)
+                return
 
-                if users[uid]["credits"] != "Unlimited":
+            uid, credits = parts
 
-                    current = int(users[uid]["credits"])
-
-                    new = current - int(credits)
-
-                    if new < 0:
-                        new = 0
-
-                    users[uid]["credits"] = str(new)
-
-                    save_db()
-
-                try:
-
-                    bot.send_message(
-                        uid,
-                        f"❌ {credits} Credits Removed"
-                    )
-
-                except:
-                    pass
+            if not credits.isdigit():
 
                 bot.send_message(
                     user_id,
-                    "✅ Credits Removed"
+                    "❌ Credits must be number"
                 )
 
-        except:
+                waiting.pop(user_id)
+                return
+
+            if uid not in users:
+
+                bot.send_message(
+                    user_id,
+                    "❌ User Not Found"
+                )
+
+                waiting.pop(user_id)
+                return
+
+            if users[uid]["credits"] == "Unlimited":
+
+                bot.send_message(
+                    user_id,
+                    "❌ Unlimited User Credits Can't Be Removed"
+                )
+
+                waiting.pop(user_id)
+                return
+
+            current = int(users[uid]["credits"])
+
+            new = current - int(credits)
+
+            if new < 0:
+                new = 0
+
+            users[uid]["credits"] = str(new)
+
+            save_db()
+
+            try:
+
+                bot.send_message(
+                    uid,
+                    f"❌ {credits} Credits Removed\n💎 Remaining Credits: {new}"
+                )
+
+            except:
+                pass
 
             bot.send_message(
                 user_id,
-                "❌ Invalid Format"
+                f"✅ Removed {credits} Credits\n💎 Remaining: {new}"
+            )
+
+        except Exception as e:
+
+            bot.send_message(
+                user_id,
+                f"❌ Error: {e}"
             )
 
         waiting.pop(user_id)
