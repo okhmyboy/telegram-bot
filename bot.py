@@ -479,9 +479,9 @@ save_db()
 
 try:
 
-            bot.send_message(
-                uid,
-                f"""
+    bot.send_message(
+        uid,
+        f"""
 🎉 PLAN ACTIVATED
 
 📦 Plan: {plan}
@@ -489,10 +489,10 @@ try:
 💎 Credits: {x['credits']}
 ⚡ Per Day: {x['perday']}
 """
-            )
+    )
 
-        except:
-            pass
+except:
+    pass
 
         bot.edit_message_text(
             "✅ User Added",
