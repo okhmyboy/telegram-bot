@@ -493,7 +493,6 @@ except:
     pass
 
 bot.edit_message_text(
-bot.edit_message_text(
         "✅ User Added",
         call.message.chat.id,
         call.message.message_id
