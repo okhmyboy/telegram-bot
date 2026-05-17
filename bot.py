@@ -498,25 +498,23 @@ bot.edit_message_text(
         call.message.message_id
     )
 
-    # REMOVE USER
 elif call.data == "removeuser":
 
-        waiting[user_id] = "removeuser"
+    waiting[user_id] = "removeuser"
 
-        bot.send_message(
-            user_id,
-            "Send User ID"
-        )
+    bot.send_message(
+        user_id,
+        "Send User ID"
+    )
 
-    # ADD CREDITS
 elif call.data == "addcredits":
 
-        waiting[user_id] = "addcredits_user"
+    waiting[user_id] = "addcredits_user"
 
-        bot.send_message(
-            user_id,
-            "Send User ID"
-        )
+    bot.send_message(
+        user_id,
+        "Send User ID"
+)
 
 elif call.data.startswith("creditselect_"):
 
