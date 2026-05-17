@@ -501,7 +501,7 @@ bot.edit_message_text(
         )
 
     # REMOVE USER
-    elif call.data == "removeuser":
+elif call.data == "removeuser":
 
         waiting[user_id] = "removeuser"
 
@@ -511,7 +511,7 @@ bot.edit_message_text(
         )
 
     # ADD CREDITS
-    elif call.data == "addcredits":
+elif call.data == "addcredits":
 
         waiting[user_id] = "addcredits_user"
 
@@ -520,7 +520,7 @@ bot.edit_message_text(
             "Send User ID"
         )
 
-    elif call.data.startswith("creditselect_"):
+elif call.data.startswith("creditselect_"):
 
         plan = call.data.replace("creditselect_", "")
 
