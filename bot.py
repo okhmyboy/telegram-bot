@@ -478,7 +478,6 @@ users[uid] = {
 save_db()
 
 try:
-
     bot.send_message(
         uid,
         f"""
@@ -490,14 +489,13 @@ try:
 ⚡ Per Day: {x['perday']}
 """
     )
-
 except:
     pass
 
 bot.edit_message_text(
-            "✅ User Added",
-            call.message.chat.id,
-            call.message.message_id
+    "✅ User Added",
+    call.message.chat.id,
+    call.message.message_id
 )
 
     # REMOVE USER
