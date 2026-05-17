@@ -2,6 +2,7 @@ import telebot
 import requests
 import json
 import os
+from datetime import datetime, timedelta
 from flask import Flask
 from threading import Thread
 from telebot.types import (
@@ -464,11 +465,14 @@ def callback(call):
 
         x = plans[plan]
 
-        users[uid] = {
-            "plan": plan,
-            "days": x["days"],
-            "credits": x["credits"],
-            "perday": x["perday"]
+        expiry = datetime.now() + timedelta(days=int(x["days"]))
+
+users[uid] = {
+    "plan": plan,
+    "days": x["days"],
+    "credits": x["credits"],
+    "perday": x["perday"],
+    "expiry": expiry.strftime("%Y-%m-%d %H:%M:%S")
         }
 
         save_db()
@@ -624,7 +628,27 @@ def callback(call):
 def messages(message):
 
     user_id = str(message.chat.id)
+# EXPIRY CHECK
+if user_id in users and "expiry" in users[user_id]:
 
+    expiry = datetime.strptime(
+        users[user_id]["expiry"],
+        "%Y-%m-%d %H:%M:%S"
+    )
+
+    if datetime.now() > expiry:
+
+        users[user_id]["plan"] = "Expired"
+        users[user_id]["credits"] = "0"
+
+        save_db()
+
+        bot.send_message(
+            user_id,
+            "❌ Your plan has expired"
+        )
+
+        return
     action = waiting[user_id]
 
     # ADD PLAN NAME
