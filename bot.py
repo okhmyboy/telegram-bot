@@ -493,6 +493,7 @@ except:
     pass
 
 bot.edit_message_text(
+bot.edit_message_text(
         "✅ User Added",
         call.message.chat.id,
         call.message.message_id
@@ -514,11 +515,15 @@ elif call.data == "addcredits":
     bot.send_message(
         user_id,
         "Send User ID"
-)
+    )
 
 elif call.data.startswith("creditselect_"):
 
-        plan = call.data.replace("creditselect_", "")
+    plan = call.data.replace("creditselect_", "")
+
+    uid = temp[user_id]["uid"]
+
+    x = creditplans[plan]
 
         uid = temp[user_id]["uid"]
 
