@@ -473,9 +473,9 @@ users[uid] = {
     "credits": x["credits"],
     "perday": x["perday"],
     "expiry": expiry.strftime("%Y-%m-%d %H:%M:%S")
-        }
+}
 
-        save_db()
+save_db()
 
         try:
 
