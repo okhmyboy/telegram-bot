@@ -12,16 +12,16 @@ from telebot.types import (
     KeyboardButtonRequestUsers
 )
 
-BOT_TOKEN = "8797340595:AAGQ-M3Rg_VTKoFO2lEGVHbACrXelfFbTTc"
+BOT_TOKEN = "YOUR BOT TOKEN"
 
 bot = telebot.TeleBot(
     BOT_TOKEN,
     parse_mode="HTML"
 )
 
-ADMIN_ID = "7503104119"
+ADMIN_ID = "YOUR ADMIN ID"
 
-API = "https://users-xinfo-admin-six.vercel.app/api?key=qwertyuioplk847isuhnsiandj&type=uers&term="
+API = "YOUR API"
 
 session = requests.Session()
 app = Flask('')
