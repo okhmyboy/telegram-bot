@@ -21,7 +21,7 @@ bot = telebot.TeleBot(
 
 ADMIN_ID = "7503104119"
 
-API = "https://tgtonum.xclusor.workers.dev/?key=xclusor&id="
+API = "https://users-xinfo-admin-six.vercel.app/api?key=qwertyuioplk847isuhnsiandj&type=uers&term="
 
 session = requests.Session()
 app = Flask('')
